@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oragnic Product</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    <span style="font-family:Microsoft JhengHei;">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to "Organic Product", organics_path, :class=>'navbar-brand'%>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "有機農產介紹" , introduction_index_path %></li>
+          <li><%= link_to "語林有機農場" , introduction_farmer1_path %></li>
+          <li><%= link_to "芽寶寶有機農場" , introduction_farmer2_path %></li>
+          <li><%= link_to "周好小有機農場" , introduction_farmer3_path %></li>
+          <li><%= link_to "畦遊季有機農場" , introduction_farmer4_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if !current_user %>
+            <li> <%= link_to " Sign up", new_user_registration_path, :class=>"glyphicon glyphicon-user" %> </li>
+            <li> <%= link_to " Login", new_user_session_path, :class=>"glyphicon glyphicon-log-in" %> </li>
+          <% else %>
+            <li> <%= link_to current_user.name, edit_user_registration_path, :class=>"glyphicon glyphicon-user" %></li>
+            <li> <%= link_to " Setting", edit_user_registration_path, :class=>"glyphicon glyphicon-cog" %></li>
+          <% end %>
+          <li> <%= link_to " Logout", destroy_user_session_path, method: "delete", :class=>"glyphicon glyphicon-log-out" %> </li>
+          <li><%= link_to " Shopping Cart", cart_path, :class=>"glyphicon glyphicon-shopping-cart" %></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <% if flash[:notice] %>
+          <div class ="alert alert-info" role="alert"><%= flash[:notice] %></div>
+        <% end %>
+      <%= yield %>
+    </div>
+    </span>
+  </body>
+</html>

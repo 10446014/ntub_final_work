@@ -1,0 +1,74 @@
+<div class="container">
+  
+  <div class="row" id="cus">
+    <div class="col-xs-9">
+      <div class="row">
+        <div class="col-xs-12">
+<!--    //////////////                      輪播    ///////////////////                                                  -->
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="carousel slide" id="carousel-819398">
+									<ol class="carousel-indicators">
+										<li class="active" data-slide-to="0" data-target="#carousel-819398">
+										</li>
+										<li data-slide-to="1" data-target="#carousel-819398">
+										</li>
+										<li data-slide-to="2" data-target="#carousel-819398">
+										</li>
+									</ol>
+									<div class="carousel-inner">
+										<div class="item active">
+											<%= image_tag("slide1.jpg") %>
+										</div>
+										<div class="item">
+											<%= image_tag("slide2.jpg") %>
+										</div>
+										<div class="item">
+											<%= image_tag("slide3.jpg") %>
+										</div>
+									</div> <a class="left carousel-control" href="#carousel-819398" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-819398" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+<!--    //////////////                      輪播    ///////////////////                                                  -->
+        </div>
+      </div>
+			<div style="margin-top: 30px;">
+      <div class="row">
+        <% @organics.each do |organic| %>
+          <div class="col-xs-4">
+            <div class="thumbnail">
+             <td><%= link_to image_tag(organic.image_url, :width => '90%', :height => '30px'), organic if organic.image.present?%></td>
+              <div class="caption">
+                <h3><%= link_to organic.title, organic_path(organic) %></h3>
+                <p><%= organic.description %></p>
+                <p>
+									<% if user_signed_in? %>
+    								<% if isAdmin?(current_user.email) %>
+											<%= link_to "edit" , edit_organic_path(organic) , class: "btn btn-success" %>
+											<%= link_to "delete" , organic_path(organic), method: "delete" , data: {confirm: "Are you sure?!"} %>
+										<% end %>
+ 									<% end %>
+									<%= link_to '加入購物車', add_cart_path(organic), method: "post", class: "btn btn-xs btn-danger" %>
+								</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+	  </div>
+    </div>
+  </div>
+</div>
+
+  <% if user_signed_in? %>
+		<% if isAdmin?(current_user.email) %>
+			<%= link_to "add organic", new_organic_path , class: "btn btn-danger" %>
+		<% end %>
+	<% end %>
+
+
+

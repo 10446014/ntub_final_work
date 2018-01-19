@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 3, from LayoutIt!</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div style="margin-top: 20px;">
+							<div class="col-md-6">
+								<%= image_tag(@organic.image_url, :width => 450, :class => "img-thumbnail") if @organic.image.present? %>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<h2 class="text-primary">
+								<b><%= @organic.title %></b>
+							</h2>
+							  <br />
+								<h4>
+									<%= @organic.description %>
+								</h4>
+								<br />
+								<h4>
+								價格 : <%= @organic.price %>
+							  </h4>
+							<p>
+								<br />
+								<%= link_to "加入購物車", add_cart_path, method: "post", class: "btn btn-danger" %>
+							</p>
+						</div>
+					</div><br />
+					<div class="tabbable" id="tabs-86935">
+						<ul class="nav nav-tabs">
+							<li>
+								<a href="#panel-943359" data-toggle="tab">商品介紹</a>
+							</li>
+							<li class="active">
+								<a href="#panel-443052" data-toggle="tab">配送須知</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane" id="panel-943359">
+								<br />
+								<h4 class="text-success"><b>健康追求者，種下林口的有機夢</b></h4></br>
+								<div align="center">
+									<%= image_tag("簡介1.jpg", height: 1300, width: 1100 ) %>
+								</div>
+							</div>
+							<div class="tab-pane active" id="panel-443052">
+								<div class="row">
+									<div class="col-md-12"><br />
+										<ul>
+											<li>
+												宅配到府
+											</li>
+											<li>
+												配送地點僅侷限於北部地區
+											</li>
+											<li>
+												配送時間:上午8:00~下午5:00
+											</li>
+											<li>
+												貨到付款
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

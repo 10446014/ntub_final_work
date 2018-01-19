@@ -1,0 +1,9 @@
+
+
+<%= simple_form_for organic, html: { multipart: true } do |f| %>
+  <%= f.input :title %><br />
+  <%= f.input :description %><br />
+  <%= f.input :price %><br />
+  <%= f.file_field :image %>
+  <%= f.submit %>
+<% end %>
